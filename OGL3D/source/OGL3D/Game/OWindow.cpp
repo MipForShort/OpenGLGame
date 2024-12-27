@@ -9,10 +9,13 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 	case WM_DESTROY:
 	{
 		OWindow* window = (OWindow*)GetWindowLongPtr(hwnd, GWLP_USERDATA);
-		window->onDestroy();
 		break;
 	}
-
+	case WM_CLOSE:
+	{
+		PostQuitMessage(0);
+		break;
+	}
 	default:
 		return DefWindowProc(hwnd, msg, wParam, lParam);	
 	}
@@ -22,19 +25,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
 OWindow::OWindow()
 {
-	WNDCLASSEX wc = {};
-	wc.cbSize = sizeof(WNDCLASSEX);
-	wc.lpszClassName = L"OGL3DWindow";
-	wc.lpfnWndProc = DefWindowProc;
-
-	assert(RegisterClassEx(&wc));
-
-
-	RECT rc = { 0,0,1024,768 };
-	AdjustWindowRect(&rc, WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU, false);
-
-	m_handle = CreateWindowEx(NULL, L"OGL3DWindow", L"OpenGL 3D Game", WS_SYSMENU, CW_USEDEFAULT, CW_USEDEFAULT,
-		rc.right - rc.left, rc.bottom - rc.top, NULL, NULL, NULL, NULL);
+	
 	
 	assert(m_handle);
 
@@ -47,14 +38,4 @@ OWindow::OWindow()
 OWindow::~OWindow()
 {
 	DestroyWindow((HWND)m_handle);
-}
-
-void OWindow::onDestroy()
-{
-	m_handle = nullptr;
-}
-
-bool OWindow::isClosed()
-{
-	return !m_handle;
 }

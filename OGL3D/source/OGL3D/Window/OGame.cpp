@@ -1,10 +1,12 @@
 #include <OGL3D/Game/OGame.h>
 #include <OGL3D/Window/OWindow.h>
+#include <OGL3D/Graphics/OGraphicsEngine.h>
 #include <Windows.h>
 
 OGame::OGame()
 {
-	m_display = std::unique_ptr<OWindow>(new OWindow());
+	m_graphicsEngine = std::make_unique<OGraphicsEngine>();
+	m_display = std::make_unique<OWindow>();
 }
 
 OGame::~OGame()
@@ -13,13 +15,21 @@ OGame::~OGame()
 
 void OGame::run()
 {
-	MSG msg;
-	while (m_isRunning && !m_display->isClosed())
+	while (m_isRunning)
 	{
+		MSG msg = {};
 		if (PeekMessage(&msg, NULL, NULL, NULL, PM_REMOVE))
 		{
-			TranslateMessage(&msg);
-			DispatchMessage(&msg);
+			if (msg.message == WM_QUIT)
+			{
+				m_isRunning = false;
+				continue;
+			}
+			else
+			{
+				TranslateMessage(&msg);
+				DispatchMessage(&msg);
+			}	
 		}
 
 		Sleep(1);

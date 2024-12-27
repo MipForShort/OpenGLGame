@@ -24,6 +24,9 @@
     <ClCompile Include="OGL3D\source\OGL3D\Window\OGame.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="OGL3D\source\OGL3D\Graphics\OGraphicsEngine.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="OGL3D\include\OGL3D\Window\OWindow.h">
@@ -33,6 +36,9 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="Game\main.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="OGL3D\include\OGL3D\Graphics\OGraphicsEngine.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

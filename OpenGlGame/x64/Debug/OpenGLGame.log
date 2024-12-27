@@ -1,4 +1,4 @@
-﻿  main.cpp
-  OGame.cpp
-  Generando código...
-  OpenGLGame.vcxproj -> C:\Users\Mip\Desktop\Code\C++\Projects\OpenGLGame\x64\Debug\OpenGLGame.exe
+﻿  OGraphicsEngine.cpp
+OGraphicsEngine.obj : error LNK2019: símbolo externo gladLoadGL sin resolver al que se hace referencia en la función "public: __cdecl OGraphicsEngine::OGraphicsEngine(void)" (??0OGraphicsEngine@@QEAA@XZ)
+OGraphicsEngine.obj : error LNK2019: símbolo externo gladLoadWGL sin resolver al que se hace referencia en la función "public: __cdecl OGraphicsEngine::OGraphicsEngine(void)" (??0OGraphicsEngine@@QEAA@XZ)
+C:\Users\Mip\Desktop\Code\C++\Projects\OpenGLGame\x64\Debug\OpenGLGame.exe : fatal error LNK1120: 2 externos sin resolver
